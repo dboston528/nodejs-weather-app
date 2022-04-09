@@ -1,6 +1,6 @@
 const request = require("postman-request")
-
-const url = 'http://api.weatherstack.com/current?access_key=1a0524bd57f10eeb53831f17ae333821&query=41.6236346,-87.6609434&units=f';
+require('dotenv').config()
+const url = process.env.WEATHER_STACK_URL;
 
 request({url: url, json: true}, (error, response)=>{
     

@@ -22,29 +22,29 @@ request({url: url, json: true}, (error, response)=>{
 })
 
 
-// const map_box_url = 'https://api.mapbox.com/geocoding/v5/mapbox.places/ioiggghj.json?access_token=pk.eyJ1IjoiZGJvc3RvbjUyOCIsImEiOiJja3UzajFpcHkxMG84Mm9uaWRoeDg5NHZwIn0.66HPrpLNABaU0FqZ1nypag&limit=1'
+const map_box_url = process.env.MAP_BOX_URL;
 
-// request({url: map_box_url , json: true}, (error, response)=>{
-//     if(error){
-//         console.log("You aint connected bro!")
-//     } else if (response.body.error){
-//         console.log('we caint find dat location, sorry!')
+request({url: map_box_url , json: true}, (error, response)=>{
+    if(error){
+        console.log("You aint connected bro!")
+    } else if (response.body.error){
+        console.log('we caint find dat location, sorry!')
 
-//     }else {
-//         const lon = response.body.features[0].center[0]
-//         const lat = response.body.features[0].center[1]
-//         console.log(lat,lon)
+    }else {
+        const lon = response.body.features[0].center[0]
+        const lat = response.body.features[0].center[1]
+        console.log(lat,lon)
 
-//     }
-
-    
+    }
 
     
-// }) 
+
+    
+}) 
 
 //Goal: Handle errors for geocoding request
 
 // 1. Setup an error for low-level errors
 // 2. Test by disabling network request and running the app
 // 3. setup error handling for no matchin the app`
-// 4. test by altering the search term and running the app. 
+// 4. test by altering the search term and running the app

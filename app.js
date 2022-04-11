@@ -14,13 +14,8 @@ request({url: url, json: true}, (error, response)=>{
         const feelslike = response.body.current.feelslike
         const description = response.body.current.weather_descriptions[0]
         console.log(`${description}. It is currently ${temp} degrees out. It feels like ${feelslike} degrees out.`)
-        // console.log(response)
     }
-
-
-    
 })
-
 
 const map_box_url = process.env.MAP_BOX_URL;
 
@@ -36,15 +31,4 @@ request({url: map_box_url , json: true}, (error, response)=>{
         console.log(lat,lon)
 
     }
-
-    
-
-    
-}) 
-
-//Goal: Handle errors for geocoding request
-
-// 1. Setup an error for low-level errors
-// 2. Test by disabling network request and running the app
-// 3. setup error handling for no matchin the app`
-// 4. test by altering the search term and running the app
+})

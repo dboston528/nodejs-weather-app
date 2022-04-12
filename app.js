@@ -6,7 +6,7 @@ request({url: url, json: true}, (error, response)=>{
     
     if(error){
         console.log("Unable to connect to weather service!")
-    } else if (response.body.error){a
+    } else if (response.body.error){
         console.log("Unable to find location")
         
     } else {

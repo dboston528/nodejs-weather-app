@@ -22,10 +22,10 @@ const map_box_url = process.env.MAP_BOX_URL;
 request({url: map_box_url , json: true}, (error, response)=>{
     if(error){
         console.log("You aint connected bro!")
-    } else if (response.body.error){
-        console.log('we caint find dat location, sorry!')
+    } else if (response.body.features.length === 0){
+        console.log('we cant find dat location, sorry!')
 
-    }else {
+    } else {
         const lon = response.body.features[0].center[0]
         const lat = response.body.features[0].center[1]
         console.log(lat,lon)

@@ -1,6 +1,6 @@
 const request = require("postman-request")
 const encodedURIComponent = require
-// require('dotenv').config()
+require('dotenv').config()
 // const url = process.env.WEATHER_STACK_URL;
 
 // request({url: url, json: true}, (error, response)=>{
@@ -35,20 +35,18 @@ const encodedURIComponent = require
 // })
 
 const geocode = (address , callback) => {
-    const url = 
-    
-    request({url:url, json: true}, (error, response) => {
-        console.log(response.body.features.length)
-        // if (error) {
-        //     callback("unable to connect to location service", undefined)
-        // } else if (response.body.features.length === 0) {
-        //     callback("Unable to find location. Try another search", undefinded)
-
-        // }
+    const url2 = `https://api.mapbox.com/geocoding/v5/mapbox.places/${address}${process.env.MAP_BOX_URL2}`;
+    console.log(url2)
+    request({url:url2, json: true}, (error, response) => {
+        if (error) {
+            callback("unable to connect to location service", undefined)
+         } else if(response.body.features.length === 0){
+             callback("Can't find that location")
+         }
     })
 }
 
-geocode('77iulklnlj', (error, data) => {
+geocode('Chicago', (error, data) => {
     console.log('Error', error)
     console.log("Data", data)
 })
